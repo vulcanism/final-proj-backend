@@ -3,7 +3,7 @@ class SightingsController < ApplicationController
 
     def index
         @cryptid = Cryptid.find_by(id: params[:id])
-        
+
         if @cryptid
             @sightings = @cryptid.sightings
         else
@@ -13,15 +13,27 @@ class SightingsController < ApplicationController
     end
 
     def create
+        @cryptid = Cryptid.find_by(id: params[:id])
+        @sighting = @cryptid.sightings.build(sighting_params)
     end
 
     def show
+        @sighting = Sighting.find_by(id: params[:id])
+        render json: @sighting
     end
 
     def update
     end
 
     def destroy
+        @cryptid = Cryptid.find_by(id: params[:id])
+
+        if @cryptid
+            @sightings = @cryptid.sightings.find_by(id: params[:id])
+        else
+            render json: {error: "Could not find associated cryptid"}
+        end
+        @sighting.destroy
     end
 
     private
