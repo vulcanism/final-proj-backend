@@ -2,14 +2,8 @@ class SightingsController < ApplicationController
     before_action :set_sighting, only: [:update, :destroy]
 
     def index
-        @cryptid = Cryptid.find_by(id: params[:id])
-
-        if @cryptid
-            @sightings = @cryptid.sightings
-        else
-            render json: {error: "Could not find associated cryptid"}
-        end
-        render json: @sightings
+        @sightings = Sighting.all
+        render json: SightingSerializer.new(@sightings), include: [:cryptid]
     end
 
     def create
@@ -19,10 +13,11 @@ class SightingsController < ApplicationController
 
     def show
         @sighting = Sighting.find_by(id: params[:id])
-        render json: @sighting
+        render json: SightingSerializer.new(@sighting), include: [:cryptid]
     end
 
     def update
+        @sighting.update(sighting_params)
     end
 
     def destroy
