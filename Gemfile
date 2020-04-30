@@ -27,6 +27,8 @@ gem 'rack-cors'
 
 gem 'pry'
 
+gem 'foreman'
+
 gem 'fast_jsonapi'
 
 group :development, :test do
