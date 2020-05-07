@@ -1,5 +1,4 @@
-class CryptidSerializer
-    include FastJsonapi::ObjectSerializer
+class CryptidSerializer < ActiveModel::Serializer   
 
     attributes :id, :name, :size, :classification
 

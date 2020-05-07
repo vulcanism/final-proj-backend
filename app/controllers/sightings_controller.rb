@@ -3,7 +3,7 @@ class SightingsController < ApplicationController
 
     def index
         @sightings = Sighting.all
-        render json: SightingSerializer.new(@sightings), include: [:cryptid]
+        render json: @sightings
     end
 
     def create
@@ -13,7 +13,7 @@ class SightingsController < ApplicationController
 
     def show
         @sighting = Sighting.find_by(id: params[:id])
-        render json: SightingSerializer.new(@sighting), include: [:cryptid]
+        render json: @sighting
     end
 
     def update

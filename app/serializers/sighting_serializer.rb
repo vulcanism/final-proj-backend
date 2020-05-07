@@ -1,7 +1,6 @@
-class SightingSerializer
-    include FastJsonapi::ObjectSerializer
+class SightingSerializer < ActiveModel::Serializer    
 
-    attributes :cryptid_id, :date, :location, :note
+    attributes :id, :cryptid_id, :date, :location, :note
 
     belongs_to :cryptid
 

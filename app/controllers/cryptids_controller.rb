@@ -3,30 +3,21 @@ class CryptidsController < ApplicationController
 
     def index
         @cryptids = Cryptid.all
-        options = {
-            include: [:sightings]
-        }
-        render json: CryptidSerializer.new(@cryptids, options)
+        render json: @cryptids
     end
 
     def create
-        @cryptid = Cryptid.create!(cryptid_params)
-        options = {
-            include: [:sightings]
-        }
+        @cryptid = Cryptid.new(cryptid_params)        
         if @cryptid.save
-            render json: CryptidSerializer.new(@cryptid)
+            render json: @cryptid
         else
             render json: {error: "Error creating cryptid"}
         end
     end
 
     def show
-        @cryptid = Cryptid.find_by(id: params[:id])
-        options = {
-            include: [:sightings]
-        }
-        render json: CryptidSerializer.new(@cryptid, options)
+        @cryptid = Cryptid.find_by(id: params[:id])        
+        render json: @cryptid
     end
 
     def update
