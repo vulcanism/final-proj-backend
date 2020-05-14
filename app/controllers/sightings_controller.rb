@@ -9,7 +9,7 @@ class SightingsController < ApplicationController
     def create
         @cryptid = Cryptid.find_by(id: params[:cryptid_id])
         @sighting = @cryptid.sightings.create(sighting_params)
-        render json: @sighting
+        render json: @cryptid
     end
 
     def show
