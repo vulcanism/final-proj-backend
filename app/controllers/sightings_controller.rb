@@ -21,15 +21,10 @@ class SightingsController < ApplicationController
         @sighting.update(sighting_params)
     end
 
-    def destroy
-        @cryptid = Cryptid.find_by(id: params[:cryptid_id])
-
-        if @cryptid
-            @sightings = @cryptid.sightings.find_by(id: params[:id])
-        else
-            render json: {error: "Could not find associated cryptid"}
-        end
+    def destroy    
+        @cryptid = Cryptid.find_by(id: params[:cryptid_id])                
         @sighting.destroy
+        render json: @cryptid
     end
 
     private
