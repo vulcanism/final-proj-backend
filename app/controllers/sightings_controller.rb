@@ -7,8 +7,9 @@ class SightingsController < ApplicationController
     end
 
     def create
-        @cryptid = Cryptid.find_by(id: params[:id])
-        @sighting = @cryptid.sightings.build(sighting_params)
+        @cryptid = Cryptid.find_by(id: params[:cryptid_id])
+        @sighting = @cryptid.sightings.create(sighting_params)
+        render json: @sighting
     end
 
     def show
@@ -21,7 +22,7 @@ class SightingsController < ApplicationController
     end
 
     def destroy
-        @cryptid = Cryptid.find_by(id: params[:id])
+        @cryptid = Cryptid.find_by(id: params[:cryptid_id])
 
         if @cryptid
             @sightings = @cryptid.sightings.find_by(id: params[:id])
