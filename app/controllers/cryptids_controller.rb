@@ -22,7 +22,8 @@ class CryptidsController < ApplicationController
 
     def update
         @cryptid.update(cryptid_params)
-        head :no_content
+        @cryptid.save
+        render json: @cryptid
     end
 
     def destroy
@@ -37,7 +38,7 @@ class CryptidsController < ApplicationController
     end
 
     def set_cryptid
-        @cryptid = Cryptid.find_by(id: params[:id])
+        @cryptid = Cryptid.find(params[:id])
     end
 
 end
