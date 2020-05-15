@@ -28,7 +28,7 @@ class CryptidsController < ApplicationController
 
     def destroy
         @cryptid.destroy
-        head :no_content
+        render json: @cryptid
     end
 
     private
