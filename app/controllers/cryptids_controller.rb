@@ -7,12 +7,8 @@ class CryptidsController < ApplicationController
     end
 
     def create
-        @cryptid = Cryptid.new(cryptid_params)        
-        if @cryptid.save
-            render json: @cryptid
-        else
-            render json: {error: "Error creating cryptid"}
-        end
+        @cryptid = Cryptid.create(cryptid_params)      
+        render json: @cryptid        
     end
 
     def show
