@@ -12,7 +12,7 @@ class CryptidsController < ApplicationController
     end
 
     def show
-        @cryptid = Cryptid.find_by(id: params[:id])        
+        @cryptid = Cryptid.find(params[:id])        
         render json: @cryptid
     end
 
