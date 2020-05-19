@@ -1,24 +1,4 @@
-# README
+# Cryptid Tracker README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Welcome! You are currently viewing the back end for Cryptid Tracker. Please click here to see the front end and installation instructions:
+https://github.com/vulcanism/final-proj-frontend
